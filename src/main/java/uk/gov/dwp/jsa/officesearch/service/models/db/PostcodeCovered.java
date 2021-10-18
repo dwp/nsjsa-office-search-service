@@ -2,6 +2,7 @@ package uk.gov.dwp.jsa.officesearch.service.models.db;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.Column;
@@ -23,6 +24,7 @@ public class PostcodeCovered {
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     @Column(name = "id", updatable = false, nullable = false, unique = true)
+    @Type(type = "uuid-char")
     private UUID postcodeCoveredId;
     private String postcodeZone;
     @CreationTimestamp
