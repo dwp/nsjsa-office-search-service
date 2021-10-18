@@ -7,15 +7,6 @@ Microservice to return the details of the nearest Job Centre Plus for a given po
 
 * Java 8
 * Maven
-* Docker (for postgresql)
-
-## DB
-### Local DB
-
-The easiest way to have a local DB up and running on your machine is to use docker
-```bash
-$ docker run --name dwp-jsa -e POSTGRES_PASSWORD=password -e POSTGRES_DB=dwp-jsa -p5432:5432 postgres
-```
 
 ## PublicKey
 
@@ -35,9 +26,11 @@ java -Xdebug -Xrunjdwp:server=y,transport=dt_socket,address=5005,suspend=n \
 
 # Dependencies
 
-This service requires nsjsa-commons to build.
+This service requires nsjsa-commons to build
+https://github.com/dwp/nsjsa-commons
 
 ## Sample dataset
 
-src/test/resources/test-data.sql contains a sample data set that can be uploaded into
-the postgres database.
+src/main/resources/data.sql contains a sample data set that will be uploaded into
+the H2 database at the startup of the application. 
+
