@@ -1,12 +1,11 @@
 package uk.gov.dwp.jsa.officesearch.service.models.db;
 
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -20,8 +19,7 @@ import static org.apache.commons.lang3.builder.HashCodeBuilder.reflectionHashCod
 public class PostcodeCovered {
 
     @Id
-    @GeneratedValue(generator = "UUID")
-    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+    @Type(type = "uuid-char")
     @Column(name = "id", updatable = false, nullable = false, unique = true)
     private UUID postcodeCoveredId;
     private String postcodeZone;
@@ -31,7 +29,7 @@ public class PostcodeCovered {
     private LocalDateTime updatedTimestamp;
 
     @ManyToOne()
-    @JoinColumn(name = "dwp_jcp_id")
+    @JoinColumn(name = "jcp_id")
     private JobCentre jobCentre;
 
     public PostcodeCovered() {

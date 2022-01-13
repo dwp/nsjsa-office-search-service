@@ -39,7 +39,7 @@ public class OfficeSearchServiceTest {
 
     @Test
     public void getJobCentreForPostcode_JobCentreExists_JobCentreReturned() {
-        given(postcodeCoveredRepository.findByPostcodeZoneIgnoreCase(TestDataFixture.NORMALISED_POST_CODE)).willReturn(Optional.of(TestDataFixture.postcodeCovered()));
+        given(postcodeCoveredRepository.findFirstByPostcodeZoneIgnoreCase(TestDataFixture.NORMALISED_POST_CODE)).willReturn(Optional.of(TestDataFixture.postcodeCovered()));
 
         JobCentreResponse response = officeSearchService.getJobCentreForPostcode(TestDataFixture.POST_CODE).get();
 
@@ -52,7 +52,7 @@ public class OfficeSearchServiceTest {
 
     @Test
     public void getJobCentreForPostcode_PostCodeWithSpaces_JobCentreReturned() {
-        given(postcodeCoveredRepository.findByPostcodeZoneIgnoreCase(TestDataFixture.NORMALISED_POST_CODE)).willReturn(Optional.of(TestDataFixture.postcodeCovered()));
+        given(postcodeCoveredRepository.findFirstByPostcodeZoneIgnoreCase(TestDataFixture.NORMALISED_POST_CODE)).willReturn(Optional.of(TestDataFixture.postcodeCovered()));
 
         JobCentreResponse response = officeSearchService.getJobCentreForPostcode(TestDataFixture.POST_CODE_WITH_SPACES).get();
 

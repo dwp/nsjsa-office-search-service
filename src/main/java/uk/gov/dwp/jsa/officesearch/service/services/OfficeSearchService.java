@@ -36,7 +36,7 @@ public class OfficeSearchService {
 
         for (String postcodePartial: postcodePartials) {
             Optional<PostcodeCovered> postcodeCovered =
-                    postcodeCoveredRepository.findByPostcodeZoneIgnoreCase(postcodePartial);
+                    postcodeCoveredRepository.findFirstByPostcodeZoneIgnoreCase(postcodePartial);
             if (postcodeCovered.isPresent()) {
                 return postcodeCovered
                         .map(PostcodeCovered::getJobCentre)

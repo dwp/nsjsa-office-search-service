@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.UUID;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.nullValue;
@@ -12,6 +12,7 @@ import static org.junit.Assert.assertThat;
 
 public class JobCentreTest {
 
+    public static final UUID JCP_ID = UUID.randomUUID();;
     public static final long JOB_CENTRE_ID = 1l;
     public static final String NAME = "NAME";
     public static final String FIRST_LINE = "FIRST_LINE";
@@ -27,6 +28,7 @@ public class JobCentreTest {
     @Test
     public void hasDefaultValues() {
         final JobCentre jobCentre = new JobCentre();
+        assertThat(jobCentre.getId(), is(nullValue()));
         assertThat(jobCentre.getJobCentreId(), is(nullValue()));
         assertThat(jobCentre.getName(), is(nullValue()));
         assertThat(jobCentre.getFirstLine(), is(nullValue()));
@@ -45,6 +47,7 @@ public class JobCentreTest {
         final JobCentre jobCentre = new JobCentre(
                 NAME, FIRST_LINE, SECOND_LINE, TOWN, POST_CODE,
                 BENEFIT_CENTRE, PHONE_NUMBERS, CREATED_TIMESTAMP, UPDATED_TIMESTAMP);
+        assertThat(jobCentre.getId(), is(nullValue()));
         assertThat(jobCentre.getJobCentreId(), is(nullValue()));
         assertThat(jobCentre.getName(), is(NAME));
         assertThat(jobCentre.getFirstLine(), is(FIRST_LINE));
@@ -56,6 +59,13 @@ public class JobCentreTest {
         assertThat(jobCentre.getBenefitCentre(), is(BENEFIT_CENTRE));
         assertThat(jobCentre.getPostcodesCovered(), is(POSTCODES_COVERED));
         assertThat(jobCentre.getPhoneNumbers(), is(PHONE_NUMBERS));
+    }
+
+    @Test
+    public void setJcpId() {
+        final JobCentre jobCentre = new JobCentre();
+        jobCentre.setId(JCP_ID);
+        assertThat(jobCentre.getId(), is(JCP_ID));
     }
 
     @Test

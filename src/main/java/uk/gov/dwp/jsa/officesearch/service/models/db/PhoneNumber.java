@@ -1,12 +1,11 @@
 package uk.gov.dwp.jsa.officesearch.service.models.db;
 
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -18,9 +17,8 @@ import static org.apache.commons.lang3.builder.HashCodeBuilder.reflectionHashCod
 public class PhoneNumber {
 
     @Id
-    @GeneratedValue(generator = "UUID")
-    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     @Column(name = "id", updatable = false, nullable = false, unique = true)
+    @Type(type = "uuid-char")
     private UUID phoneNumberId;
     private String number;
     private String type;

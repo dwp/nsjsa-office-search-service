@@ -6,7 +6,5 @@ import uk.gov.dwp.jsa.officesearch.service.models.db.PostcodeCovered;
 import java.util.Optional;
 
 public interface PostcodeCoveredRepository extends CrudRepository<PostcodeCovered, Long> {
-
-    Optional<PostcodeCovered> findByPostcodeZoneIgnoreCase(final String postcodeZone);
-
+    Optional<PostcodeCovered> findFirstByPostcodeZoneIgnoreCase(final String postcodeZone);
 }

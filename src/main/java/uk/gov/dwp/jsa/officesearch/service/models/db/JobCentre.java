@@ -1,6 +1,7 @@
 package uk.gov.dwp.jsa.officesearch.service.models.db;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.Type;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.CascadeType;
@@ -15,6 +16,7 @@ import javax.persistence.OneToMany;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import static org.apache.commons.lang3.builder.EqualsBuilder.reflectionEquals;
 import static org.apache.commons.lang3.builder.HashCodeBuilder.reflectionHashCode;
@@ -23,7 +25,10 @@ import static org.apache.commons.lang3.builder.HashCodeBuilder.reflectionHashCod
 public class JobCentre {
 
     @Id
-    @Column(name = "dwp_jcp_id", updatable = false, nullable = false, unique = true)
+    @Column(name = "jcp_id", updatable = false, nullable = false, unique = true)
+    @Type(type = "uuid-char")
+    private UUID id;
+    @Column(name = "real_dwp_jcp_id")
     private Long jobCentreId;
     private String name;
     private String firstLine;
@@ -44,7 +49,7 @@ public class JobCentre {
 
     @ManyToMany()
     @JoinTable(name = "jcp_number",
-            joinColumns = @JoinColumn(name = "dwp_jcp_id"),
+            joinColumns = @JoinColumn(name = "jcp_id"),
             inverseJoinColumns = @JoinColumn(name = "phone_number_id")
     )
     private List<PhoneNumber> phoneNumbers = new ArrayList<>();
@@ -72,6 +77,14 @@ public class JobCentre {
         this.phoneNumbers = phoneNumbers;
         this.createdTimestamp = createdTimestamp;
         this.updatedTimestamp = updatedTimestamp;
+    }
+
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(final UUID id) {
+        this.id = id;
     }
 
     public Long getJobCentreId() {
