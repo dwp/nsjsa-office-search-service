@@ -31,7 +31,7 @@
         <jacoco.version>0.8.2</jacoco.version>
         <hibernate-types.version>2.3.0</hibernate-types.version>
         <liquibase.version>3.8.4</liquibase.version>
-        <io.jsonwebtoken.jjwt.version>0.10.5</io.jsonwebtoken.jjwt.version>
+        <io.jsonwebtoken.jjwt.version>0.11.4</io.jsonwebtoken.jjwt.version>
         <google.findbugs.version>3.0.2</google.findbugs.version>
         <com.google.code.findbugs.version>3.0.1</com.google.code.findbugs.version>
         <plugin.spotbugs.version>4.0.4</plugin.spotbugs.version>
